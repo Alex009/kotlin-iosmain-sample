@@ -2,7 +2,10 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
     kotlin("multiplatform")
+    kotlin("native.cocoapods")
 }
+
+version = "1.0.0"
 
 kotlin {
     val iosTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget =
@@ -12,11 +15,12 @@ kotlin {
             ::iosX64
 
     iosTarget("ios") {
-        binaries {
-            framework {
-                baseName = "shared"
-            }
-        }
+        // not needed with cocoapods plugin
+//        binaries {
+//            framework {
+//                baseName = "shared"
+//            }
+//        }
     }
     sourceSets {
         val commonMain by getting
@@ -30,5 +34,11 @@ kotlin {
                 }
             }
         }
+    }
+    cocoapods {
+        summary = "Summary"
+        homepage = "home"
+
+        pod("AFNetworking")
     }
 }

@@ -1,14 +1,18 @@
 plugins {
     kotlin("multiplatform")
+    kotlin("native.cocoapods")
 }
+
+version = "1.0.0"
 
 kotlin {
     ios {
-        binaries {
-            framework {
-                baseName = "shared"
-            }
-        }
+        // not needed with cocoapods plugin
+//        binaries {
+//            framework {
+//                baseName = "shared"
+//            }
+//        }
     }
     sourceSets {
         val commonMain by getting
@@ -22,5 +26,11 @@ kotlin {
                 }
             }
         }
+    }
+    cocoapods {
+        summary = "Summary"
+        homepage = "home"
+
+        pod("AFNetworking")
     }
 }

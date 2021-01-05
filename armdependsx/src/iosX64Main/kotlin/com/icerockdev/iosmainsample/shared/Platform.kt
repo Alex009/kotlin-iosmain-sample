@@ -1,6 +1,7 @@
 package com.icerockdev.iosmainsample.shared
 
 
+import cocoapods.AFNetworking.AFNetworkingVersionString
 import com.icerockdev.iosmainsample.interop.setAssociatedObject
 import platform.UIKit.UIDevice
 
@@ -10,5 +11,7 @@ actual class Platform actual constructor() {
 
     init {
         setAssociatedObject(this, "test")
+
+        println(AFNetworkingVersionString)
     }
 }
