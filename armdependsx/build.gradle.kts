@@ -16,7 +16,11 @@ kotlin {
 //        }
     }
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2-native-mt")
+            }
+        }
         val iosX64Main by getting
         val iosArm64Main by getting {
             dependsOn(iosX64Main)
