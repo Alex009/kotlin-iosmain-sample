@@ -18,4 +18,13 @@ kotlin {
             dependsOn(iosX64Main)
         }
     }
+    kotlin {
+        targets.withType<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget>().all {
+            compilations.getByName("main") {
+                val objcAddtition by cinterops.creating {
+                    defFile(rootProject.file("objcAddtition.def"))
+                }
+            }
+        }
+    }
 }

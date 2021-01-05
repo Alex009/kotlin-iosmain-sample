@@ -1,0 +1,14 @@
+language = Objective-C
+package = com.icerockdev.iosmainsample.interop
+---
+#import <objc/runtime.h>
+
+static char kAssociatedObjectKey;
+
+id getAssociatedObject(id object) {
+  return objc_getAssociatedObject(object, &kAssociatedObjectKey);
+}
+
+void setAssociatedObject(id object, id value) {
+  return objc_setAssociatedObject(object, &kAssociatedObjectKey, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
